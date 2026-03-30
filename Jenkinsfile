@@ -5,7 +5,7 @@ pipeline {
 
         stage('Checkout') {
             steps {
-                git 'https://github.com/aswinikalyan30/aceetest-devops.git'
+                checkout scm
             }
         }
 
