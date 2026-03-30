@@ -12,6 +12,7 @@ CI/CD: GitHub Actions
 Build Automation: Jenkins
 
 ## Project Structure
+```
 aceest-devops/
 │
 ├── app.py
@@ -29,19 +30,23 @@ aceest-devops/
 │   └── main.yml
 │
 └── README.md
-
-
+```
 ## Local Setup & Execution
-1. Clone Repository
-git clone https://github.com/<username>/aceetest-devops.git
-cd aceetest-devops
+1. Clone Repository:
+   git clone https://github.com/<username>/aceetest-devops.git
+   cd aceetest-devops
+
 2. Create Virtual Environment
+
 ```
 python3 -m venv venv
 source venv/bin/activate   # Mac/Linux
 ```
+
 3. Install Dependencies
 `pip install -r requirements.txt`
+
+
 4. Run Application
 `python app.py`
 
@@ -49,20 +54,27 @@ source venv/bin/activate   # Mac/Linux
 
 http://localhost:8000
 
+
 ### Running Tests
 Run all tests using:
 `pytest`
+
 Expected output:
 `1 passed`
 
 ## Docker Setup
 1. Build Docker Image
+   
 `docker build -t aceest-app .`
+
 2. Run Container
+
 `docker run -p 8000:5000 aceest-app`
 
 3. Access:
+
 http://localhost:8000
+
 
 ## GitHub Actions CI/CD Pipeline
 The pipeline is triggered on every push and pull request.
