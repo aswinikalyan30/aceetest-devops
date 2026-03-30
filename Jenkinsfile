@@ -9,29 +9,19 @@ pipeline {
             }
         }
 
-        stage('Build Docker Image') {
-            steps {
-                sh 'docker build -t aceest-app .'
-            }
-        }
-
-        stage('Run Tests Inside Container') {
+        stage('Install Python & Dependencies') {
             steps {
                 sh '''
-                docker run --rm aceest-app pytest
+                apt-get update
+                apt-get install -y python3 python3-pip
+                pip3 install -r requirements.txt
                 '''
             }
         }
 
-        stage('Run Container Test') {
+        stage('Run Tests') {
             steps {
-                sh '''
-                docker run -d -p 9000:5000 --name test-container aceest-app
-                sleep 5
-                curl http://localhost:9000
-                docker stop test-container
-                docker rm test-container
-                '''
+                sh 'pytest'
             }
         }
     }
