@@ -9,21 +9,17 @@ pipeline {
             }
         }
 
-        stage('Install Dependencies') {
-            steps {
-                sh 'pip install -r requirements.txt'
-            }
-        }
-
-        stage('Run Tests') {
-            steps {
-                sh 'pytest'
-            }
-        }
-
         stage('Build Docker Image') {
             steps {
                 sh 'docker build -t aceest-app .'
+            }
+        }
+
+        stage('Run Tests Inside Container') {
+            steps {
+                sh '''
+                docker run --rm aceest-app pytest
+                '''
             }
         }
 
