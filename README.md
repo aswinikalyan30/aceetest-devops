@@ -83,6 +83,7 @@ Pipeline Stages:
 - Run Pytest
 - Build Docker Image
 - Run container smoke test
+- Publish Docker Image to Docker Hub
 
 ## Jenkins BUILD Pipeline:
 Jenkins acts as a secondary validation layer.
